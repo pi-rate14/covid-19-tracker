@@ -1,8 +1,30 @@
 import React from 'react'
 import { Typography, TextField, Button } from '@material-ui/core'
 import './Welcome.css'
+import { useState } from 'react'
 
 const Welcome = () => {
+  const [disabled, setDisabled] = useState(true)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [info, setInfo] = useState('')
+
+  function SubmitButton() {
+    if (name && info && email) {
+      return (
+        <Button variant="contained" color="secondary" fullWidth>
+          Submit
+        </Button>
+      )
+    } else {
+      return (
+        <Button variant="contained" color="secondary" fullWidth disabled>
+          Submit
+        </Button>
+      )
+    }
+  }
+
   return (
     <div className="container">
       <div>
@@ -18,6 +40,7 @@ const Welcome = () => {
         <TextField
           id="standard-full-width"
           type="email"
+          onChange={(e) => setEmail(e.target.value)}
           fullWidth
           margin="normal"
           InputLabelProps={{
@@ -30,6 +53,7 @@ const Welcome = () => {
           id="standard-full-width"
           fullWidth
           margin="normal"
+          onChange={(e) => setName(e.target.value)}
           InputLabelProps={{
             shrink: true,
           }}
@@ -41,6 +65,7 @@ const Welcome = () => {
         <TextField
           id="filled-multiline-static"
           fullWidth
+          onChange={(e) => setInfo(e.target.value)}
           label="What is your purpose with this application?*"
           multiline
           rows={7}
@@ -50,9 +75,7 @@ const Welcome = () => {
         <br />
         <br />
         <br />
-        <Button variant="contained" color="secondary" fullWidth>
-          Submit
-        </Button>
+        <SubmitButton />
         <br />
         <br />
         <Typography variant="caption" size="small" color="textSecondary">
