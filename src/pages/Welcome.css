@@ -1,0 +1,12 @@
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.formBox {
+  height: 60vh;
+  border: 1px solid #cdcdcd;
+  width: 25vw;
+  padding: 40px;
+}

@@ -13,6 +13,9 @@ import Table from './Table'
 import LineGraph from './LineGraph'
 import 'leaflet/dist/leaflet.css'
 import { useStyles } from './MUIstyles'
+import Welcome from './pages/Welcome'
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 //https://disease.sh/v3/covid-19/gov/india
 
@@ -119,59 +122,70 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <div className="app__left">
-        <div className="app__header">
-          <h1>Covid 19 Tracker</h1>
-          <FormControl className={classes.root}>
-            <Select
-              color="secondary"
-              variant="outlined"
-              onChange={onStateChange}
-              value={country}
-            >
-              {/* Loop through all states and show them in dropdown */}
-              <MenuItem value="countrywide">country wide</MenuItem>
-              {states.map((state) => (
-                <MenuItem value={state.name}>{state.name}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-        <div className="app__stats">
-          {}
-          <InfoBox
-            title="Active cases"
-            cases={activeState.active}
-            total={activeState.totalCases}
-          />
-          <InfoBox
-            title="Recovered Today"
-            cases={activeState.todayRecovered}
-            total={activeState.recovered}
-          />
-          <InfoBox
-            title="Deaths Today"
-            cases={activeState.todayDeaths}
-            total={activeState.deaths}
-          />
-        </div>
-        <Map
-          center={mapCenter}
-          zoom={mapZoom}
-          states={states}
-          locations={locations}
-        />
+    <Router>
+      <div>
+        <Switch>
+          <Route path="/" exact>
+            <Welcome />
+          </Route>
+          <Route path="/tracker" exact>
+            <div className="app">
+              <div className="app__left">
+                <div className="app__header">
+                  <h1>CoviCheck</h1>
+                  <FormControl className={classes.root}>
+                    <Select
+                      color="secondary"
+                      variant="outlined"
+                      onChange={onStateChange}
+                      value={country}
+                    >
+                      {/* Loop through all states and show them in dropdown */}
+                      <MenuItem value="countrywide">country wide</MenuItem>
+                      {states.map((state) => (
+                        <MenuItem value={state.name}>{state.name}</MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </div>
+                <div className="app__stats">
+                  {}
+                  <InfoBox
+                    title="Active cases"
+                    cases={activeState.active}
+                    total={activeState.totalCases}
+                  />
+                  <InfoBox
+                    title="Recovered Today"
+                    cases={activeState.todayRecovered}
+                    total={activeState.recovered}
+                  />
+                  <InfoBox
+                    title="Deaths Today"
+                    cases={activeState.todayDeaths}
+                    total={activeState.deaths}
+                  />
+                </div>
+                <Map
+                  center={mapCenter}
+                  zoom={mapZoom}
+                  states={states}
+                  locations={locations}
+                />
+              </div>
+              <Card className="app__right">
+                <CardContent>
+                  <h3>Live cases by State</h3>
+                  <Table states={tableData} />
+                  <h3 className="app__graphTitle">Country wide new cases</h3>
+                  <LineGraph className="app__graph" />
+                </CardContent>
+              </Card>
+            </div>
+          </Route>
+        </Switch>
       </div>
-      <Card className="app__right">
-        <CardContent>
-          <h3>Live cases by State</h3>
-          <Table states={tableData} />
-          <h3 className="app__graphTitle">Country wide new cases</h3>
-          <LineGraph className="app__graph" />
-        </CardContent>
-      </Card>
-    </div>
+    </Router>
   )
 }
 
