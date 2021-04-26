@@ -5,6 +5,7 @@ import {
   Select,
   Card,
   CardContent,
+  Button,
 } from '@material-ui/core'
 import { useEffect, useState } from 'react'
 import InfoBox from './InfoBox'
@@ -15,7 +16,8 @@ import 'leaflet/dist/leaflet.css'
 import { useStyles } from './MUIstyles'
 import Welcome from './pages/Welcome'
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import Prediction from './pages/Prediction'
 
 //https://disease.sh/v3/covid-19/gov/india
 
@@ -180,6 +182,15 @@ function App() {
                   <h3 className="app__graphTitle">Country wide new cases</h3>
                   <LineGraph className="app__graph" />
                 </CardContent>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  fullWidth
+                  component={Link}
+                  to="/prediction"
+                >
+                  FIND RESULTS
+                </Button>
               </Card>
             </div>
           </Route>

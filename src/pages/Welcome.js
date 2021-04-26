@@ -2,9 +2,9 @@ import React from 'react'
 import { Typography, TextField, Button } from '@material-ui/core'
 import './Welcome.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Welcome = () => {
-  const [disabled, setDisabled] = useState(true)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [info, setInfo] = useState('')
@@ -12,7 +12,13 @@ const Welcome = () => {
   function SubmitButton() {
     if (name && info && email) {
       return (
-        <Button variant="contained" color="secondary" fullWidth>
+        <Button
+          variant="contained"
+          color="secondary"
+          fullWidth
+          component={Link}
+          to="/tracker"
+        >
           Submit
         </Button>
       )
@@ -74,10 +80,7 @@ const Welcome = () => {
         />
         <br />
         <br />
-        <br />
         <SubmitButton />
-        <br />
-        <br />
         <Typography variant="caption" size="small" color="textSecondary">
           *For security reasons, we record and maintain this information.
         </Typography>
