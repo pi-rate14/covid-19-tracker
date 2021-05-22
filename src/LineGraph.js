@@ -46,10 +46,10 @@ const options = {
   },
 }
 //https://disease.sh/v3/covid-19/historical/india?lastdays=30
+console.log(options)
 const buildChartData = (data, casesType) => {
   let chartData = []
   let lastDataPoint
-  console.log(data.timeline.cases)
   for (let date in data.timeline.cases) {
     if (lastDataPoint) {
       let newDataPoint = {
@@ -74,10 +74,8 @@ function LineGraph({ casesType = 'cases', ...props }) {
           return response.json()
         })
         .then((data) => {
-          console.log(data)
           let chartData = buildChartData(data, 'cases')
           setData(chartData)
-          console.log(chartData)
         })
     }
     fetchData()

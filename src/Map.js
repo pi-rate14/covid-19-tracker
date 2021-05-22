@@ -57,7 +57,7 @@ function Map({ states, locations, center, zoom }) {
                 Active Cases: {numeral(vellore.active).format('0,0')}
               </div>
               <div className="info-recovered">
-                Total Recovered: {numeral(vellore.active).format('0,0')}
+                Total Recovered: {numeral(vellore.recovered).format('0,0')}
               </div>
               <div className="info-deaths">
                 Total Deaths: {numeral(vellore.deaths).format('0,0')}

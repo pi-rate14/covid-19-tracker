@@ -90,7 +90,6 @@ function App() {
         })
     }
     getStatesData()
-    console.log(states[1])
   }, [])
 
   // states[0].lat = 11.6234

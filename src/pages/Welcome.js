@@ -46,6 +46,7 @@ const Welcome = () => {
         <TextField
           id="standard-full-width"
           type="email"
+          autoComplete="off"
           onChange={(e) => setEmail(e.target.value)}
           fullWidth
           margin="normal"
@@ -58,6 +59,7 @@ const Welcome = () => {
         <TextField
           id="standard-full-width"
           fullWidth
+          autoComplete="off"
           margin="normal"
           onChange={(e) => setName(e.target.value)}
           InputLabelProps={{
@@ -71,6 +73,7 @@ const Welcome = () => {
         <TextField
           id="filled-multiline-static"
           fullWidth
+          autoComplete="off"
           onChange={(e) => setInfo(e.target.value)}
           label="What is your purpose with this application?*"
           multiline
