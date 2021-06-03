@@ -1,7 +1,19 @@
-.graph {
-}
-
 .appGraph {
   width: 80%;
-  background-color: aqua;
+  margin: auto;
+  padding: 50px;
+}
+
+.predictionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.conditions {
+  margin: auto;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

@@ -142,7 +142,7 @@ function App() {
                       value={country}
                     >
                       {/* Loop through all states and show them in dropdown */}
-                      <MenuItem value="countrywide">country wide</MenuItem>
+                      <MenuItem value="countrywide">Country wide</MenuItem>
                       {states.map((state) => (
                         <MenuItem value={state.name}>{state.name}</MenuItem>
                       ))}
@@ -192,6 +192,9 @@ function App() {
                 </Button>
               </Card>
             </div>
+          </Route>
+          <Route>
+            <Prediction condition={activeState} />
           </Route>
         </Switch>
       </div>
