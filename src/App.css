@@ -10,10 +10,12 @@ body {
 .app {
   display: flex;
   justify-content: space-evenly;
+  padding: 10px;
 }
 
 .app__left {
   flex: 0.9;
+  padding-right: 10px;
 }
 
 .app__header {
@@ -49,6 +51,10 @@ body {
 
 @media (max-width: 600px) {
   .app {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .app__stats {
     flex-direction: column;
   }
 }
